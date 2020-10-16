@@ -3,25 +3,72 @@ layout: base.njk
 title: Minimal boilerplate for new projects built with Eleventy, Tailwind and PostCSS
 ---
 
-<main id="main" class="px-4 max-w-md mx-auto text-center">
-    <img src="/static/icon.svg" alt="Rocket icon" class="w-12 mx-auto my-4 rocket">
-    <h1 class="font-bold text-xl mb-2">JAMStack Web Starter <span class="font-light text-gray-500">v{{ pkg.version }}</span></h1>
-    <p>Minimal boilerplate for new projects built with Eleventy, Tailwind, PurgeCSS and PostCSS</p>
+<main id="main" class="container px-4 md:px-16 lg:px-32">
+    <div class="max-w-md mx-auto text-center">
+        <img src="/static/icon.svg" alt="Rocket icon" class="w-12 mx-auto my-4 rocket">
+        <h1 class="font-bold text-xl mb-2">JAMStack Web Starter <span class="font-light text-gray-500">v{{ pkg.version }}</span></h1>
+        <p>Minimal boilerplate for new projects built with Eleventy, Tailwind, PurgeCSS and PostCSS</p>
+    
+        <ul class="md:flex my-4">
+            <li class="md:flex-auto p-2">
+                <a href="https://github.com/scottishstoater/jamstack-web-starter/zipball/master/" class="block no-underline leading-tight p-3 font-bold border-2 border-ws-blue-600 bg-ws-blue-500 text-white rounded hover:bg-ws-blue-600">Download</a>
+            </li>
+            <li class="md:flex-auto p-2">
+                <a href="https://github.com/scottishstoater/jamstack-web-starter#features" class="block no-underline text-black leading-tight p-3 font-bold border-2 rounded hover:bg-gray-100">Get started</a>
+            </li>
+        </ul>
 
-    <ul class="md:flex my-4">
-        <li class="md:flex-auto p-2">
-            <a href="https://github.com/scottishstoater/jamstack-web-starter/zipball/master/" class="block no-underline leading-tight p-3 font-bold border-2 border-ws-blue-600 bg-ws-blue-500 text-white rounded hover:bg-ws-blue-600">Download</a>
-        </li>
-        <li class="md:flex-auto p-2">
-            <a href="https://github.com/scottishstoater/jamstack-web-starter#features" class="block no-underline text-black leading-tight p-3 font-bold border-2 rounded hover:bg-gray-100">Get started</a>
-        </li>
+        <footer class="text-sm text-gray-500">
+            <p class="flex items-center justify-center">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-4 mr-1"><path class="fill-current text-gray-100" d="M32 5H4C1.791 5 0 6.791 0 9v18c0 2.209 1.791 4 4 4h28c2.209 0 4-1.791 4-4V9c0-2.209-1.791-4-4-4z"/><path class="fill-current text-ws-blue-500" d="M13 18S0 8.586 0 8.895v18.21C0 27.414 13 18 13 18zm5 3S3.697 31 4.07 31h27.859C32.303 31 18 21 18 21zm5-3s13 9.414 13 9.105V8.895C36 8.586 23 18 23 18zm-5-3S3.697 5 4.07 5h27.859C32.303 5 18 15 18 15z"/></svg> <span>Proudly crafted in Scotland by <a href="https://www.chriscollins.me">Chris Collins</a></span></p>
+            <p>Go and build something great! 🥳</p>
+        </footer>
+    </div>
+
+    <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for game in games %}
+        <a href="/games/{{game.gameId}}" class="flex bg-gray-100 shadow-lg rounded-lg max-w-md md:max-w-2xl">
+            <div class="flex items-start px-4 py-6">
+                <div>
+                    <div class="flex items-center justify-between">
+                        <span class="flex">
+                            <img class="w-6 h-6 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+                            <h2 class="text-lg font-semibold text-gray-900 -mt-1">{{ game.visitingTeam.triCode }}</h2>
+                        </span>
+                        <p class="text-gray-700">{{ game.visitingTeamScore }}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="flex">
+                            <img class="w-6 h-6 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+                            <h2 class="text-lg font-semibold text-gray-900 -mt-1">{{ game.homeTeam.triCode }}</h2>
+                        </span>
+                        <p class="text-gray-700">{{ game.homeTeamScore }}</p>
+                    </div>
+
+                    <div class="mt-4 flex items-center">
+                        <div class="flex mr-2 text-gray-700 text-sm mr-3">
+                            <svg fill="none" viewBox="0 0 24 24"  class="w-4 h-4 mr-1" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            <span>Final</span>
+                        </div>
+                        <div class="flex mr-2 text-gray-700 text-sm mr-8">
+                            <svg fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-1" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                            </svg>
+                            <span>{{ game.date }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-l-2 ml-4 py-4">
+                    <p class="ml-6">Final</p>
+                </div>
+            </div>
+        </a>
+    {% else %}
+        <li>No games to Display</li>
+    {% endfor %}
     </ul>
 
-    <a href="/characters">characters</a>
-
-    <footer class="text-sm text-gray-500">
-       <p class="flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="w-4 mr-1"><path class="fill-current text-gray-100" d="M32 5H4C1.791 5 0 6.791 0 9v18c0 2.209 1.791 4 4 4h28c2.209 0 4-1.791 4-4V9c0-2.209-1.791-4-4-4z"/><path class="fill-current text-ws-blue-500" d="M13 18S0 8.586 0 8.895v18.21C0 27.414 13 18 13 18zm5 3S3.697 31 4.07 31h27.859C32.303 31 18 21 18 21zm5-3s13 9.414 13 9.105V8.895C36 8.586 23 18 23 18zm-5-3S3.697 5 4.07 5h27.859C32.303 5 18 15 18 15z"/></svg> <span>Proudly crafted in Scotland by <a href="https://www.chriscollins.me">Chris Collins</a></span></p>
-        <p>Go and build something great! 🥳</p>
-    </footer>
+    <!-- <a href="/characters">characters</a> -->
 </main>
